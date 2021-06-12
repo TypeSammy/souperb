@@ -60,14 +60,45 @@ post '/create' do
 
   recipe_categories(user_id, recipe_id, breakfast, lunch, dinner, dessert, favourite)
 
-  redirect "/display#{recipe_id}"
+  redirect "/display/#{recipe_id}"
 end
 
-get '/display:id' do |id|
+get '/display/:id' do |id|
   data = find_recipe("id", id)
   erb :"/recipe/show", locals: { recipe: data }
 end
 
-post '/:recipe_name/edit' do |recipe_name|
-  "Hello World"
+get '/display/:id/edit' do |id|
+  data = find_recipe("id", id)
+  erb :"recipe/edit", locals: { recipe: data }
+end
+
+post '/display/:id/edit' do
+  redirect "/#{recipe_id}/#{recipe_name}"
+end
+
+put '/display/:id/edit' do |id|
+  id = params[:id]
+  recipe_name = params[:recipe_name]
+  serving_size = params[:serving_size]
+  prep_time = params[:prep_time]
+  # NEED TO DO CATEGORIES
+  cook_time = params[:cook_time]
+  image_url = params[:image_url]
+  source = params[:source]
+  ingredients = params[:ingredients]
+  method = params[:method]
+  calories = params[:calories]
+  total_fat = params[:total_fat]
+  saturated_fat = params[:saturated_fat]
+  cholesterol = params[:cholesterol]
+  sodium = params[:sodium]
+  total_carb = params[:total_carb]
+  dietary_fibre = params[:dietary_fibre]
+  sugars = params[:sugars]
+  protein = params[:protein]
+
+  update_recipe(id, recipe_name, serving_size, prep_time, cook_time, image_url, source, ingredients, method, calories, total_fat, saturated_fat, cholesterol, sodium, total_carb, dietary_fibre, sugars, protein)
+
+  redirect "/display/#{id}"
 end

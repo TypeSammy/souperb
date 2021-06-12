@@ -1,1 +1,49 @@
-edit recipe
+<% recipe.each do |info| %>
+
+<form action="/display/<%=info["id"]%>/edit" method="POST">
+  <input type="hidden" name="_method" value="PUT">
+
+  <input type="text" value="<%= info["recipe_name"] %>" name="recipe_name">
+  <div>
+    <input type="text" value="<%= info["serving_size"] %>" name="serving_size">
+    <label for="categories">Select categories</label>
+    <select name="categories[]" id="categories" size="4" multiple>
+      <option value="breakfast">Breakfast</option>
+      <option value="lunch">Lunch</option>
+      <option value="dinner">Dinner</option>
+      <option value="dessert">Dessert</option>
+      <option value="favourite">Favourite</option>
+    </select>
+    <input type="text" value="<%= info["prep_time"] %>" name="prep_time">
+    <input type="text" value="<%= info["cook_time"] %>" name="cook_time">
+    <input type="text" value="<%= info["image_url"] %>" name="image_url">
+    <input type="text" value="<%= info["source"] %>" name="source">
+  </div>
+
+  <div>
+    <p>Ingredients</p>
+    <label for="ingredients">Ingredients</label>
+    <textarea name="ingredients" cols="50" rows="4"><%= info["ingredients"] %></textarea>
+  </div>
+    <div>
+    <p>Method</p>
+    <label for="method">Method</label>
+    <textarea name="method" cols="50" rows="4"><%= info["method"] %></textarea>
+  </div>
+
+  <div>
+    <label for="ingredient amount">Nutrition</label>
+    <input type="number" step="0.01" value="<%= info["calories"] %>" name="calories">
+    <input type="number" step="0.01" value="<%= info["total_fat"] %>" name="total_fat">
+    <input type="number" step="0.01" value="<%= info["saturated_fat"] %>" name="saturated_fat">
+    <input type="number" step="0.01" value="<%= info["cholesterol"] %>" name="cholesterol">
+    <input type="number" step="0.01" value="<%= info["sodium"] %>" name="sodium">
+    <input type="number" step="0.01" value="<%= info["total_carb"] %>" name="total_carb">
+    <input type="number" step="0.01" value="<%= info["dietary_fibre"] %>" name="dietary_fibre">
+    <input type="number" step="0.01" value="<%= info["sugars"] %>" name="sugars">
+    <input type="number" step="0.01" value="<%= info["protein"] %>" name="protein">
+  </div>
+
+  <input type="submit" value="UPDATE">
+</form>
+<% end %>

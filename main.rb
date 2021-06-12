@@ -4,7 +4,7 @@ require "pry" if development?
 require "pg"
 
 get '/' do
- redirect "/souperb"
+ redirect "/create"
 end
 
 require_relative "db/db"
