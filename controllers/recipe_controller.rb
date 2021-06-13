@@ -1,6 +1,12 @@
 get '/souperb' do
-  # data = select_category()
-  # erb :"/recipe/index", locals: { category: data }
+  breakfast = recipe_by_category("breakfast")
+  lunch = recipe_by_category("lunch")
+  dinner = recipe_by_category("dinner")
+  dessert = recipe_by_category("dessert")
+  favourites = recipe_by_category("favourite")
+  category = [breakfast, lunch, dinner, dessert, favourites]
+
+  erb :"/recipe/index", locals: { breakfast: breakfast, lunch: lunch, dinner: dinner, dessert: dessert, favourites: favourites, category: category}
 end
 
 get '/create' do
@@ -63,6 +69,10 @@ post '/create' do
   redirect "/display/#{recipe_id}"
 end
 
+post '/display/:id' do
+
+end
+
 get '/display/:id' do |id|
   data = find_recipe("id", id)
   erb :"/recipe/show", locals: { recipe: data }
@@ -101,4 +111,20 @@ put '/display/:id/edit' do |id|
   update_recipe(id, recipe_name, serving_size, prep_time, cook_time, image_url, source, ingredients, method, calories, total_fat, saturated_fat, cholesterol, sodium, total_carb, dietary_fibre, sugars, protein)
 
   redirect "/display/#{id}"
+end
+
+post '/category' do
+  category = params[:category].downcase
+
+  redirect "#{category}"
+end
+
+get '/:category' do |category|
+
+  if category == "all"
+    display_category = display_all(1)
+  else
+    display_category = recipe_by_category(category)
+  end
+  erb :"/recipe/category", locals: { category: display_category }
 end

@@ -1,1 +1,13 @@
-display category
+<div class="all_category_container">
+  <% category.each do |recipes| %>
+    <form action="/display/<%=recipes["id"]%>" method="GET">
+      <div class="button_container">
+        <img src="<%= recipes["image_url"] %>" alt="breakfast" style="width:100%">
+          <input class="btn" type="submit" value="<%= recipes["recipe_name"] %>" name="category">
+      </div>
+    </form>
+  <% end %>
+</div>
+
+
+

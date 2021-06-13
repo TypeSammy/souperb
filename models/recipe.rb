@@ -5,7 +5,7 @@ def create_recipe(user_id, recipe_name, serving_size, prep_time, cook_time, imag
 end
 
 def find_recipe(column_name, value)
-  sql_query = "SELECT * FROM recipes WHERE #{column_name} = $1"
+  sql_query = "SELECT * FROM recipes WHERE #{column_name} = $1 AND user_id = 1"
   params = [value]
   run_sql(sql_query, params)
 end
@@ -20,4 +20,12 @@ def update_recipe(id, recipe_name, serving_size, prep_time, cook_time, image_url
   sql_query = "UPDATE recipes SET recipe_name = $2, serving_size = $3, prep_time = $4, cook_time = $5, image_url = $6, source = $7, ingredients = $8, method = $9, calories = $10, total_fat = $11, saturated_fat = $12, cholesterol = $13, sodium = $14, total_carb = $15, dietary_fibre = $16, sugars = $17, protein = $18 WHERE id = $1"
   params = [id, recipe_name, serving_size, prep_time, cook_time, image_url, source, ingredients, method, calories, total_fat, saturated_fat, cholesterol, sodium, total_carb, dietary_fibre, sugars, protein]
   run_sql(sql_query, params)
+end
+
+def recipe_by_category(category)
+  run_sql("SELECT recipes.id, recipe_name, image_url FROM recipes LEFT JOIN user_recipe_categories ON user_recipe_categories.recipe_id = recipes.id WHERE recipes.user_id = 1 AND user_recipe_categories.#{category} = true;")
+end
+
+def display_all(user_id)
+  run_sql("SELECT id, recipe_name, image_url FROM recipes WHERE user_id = #{user_id};")
 end

@@ -37,3 +37,15 @@ CREATE TABLE user_recipe_categories (
   dessert BOOLEAN,
   favourite BOOLEAN
 );
+
+-- to display ALL recipes from specific user:
+SELECT * FROM recipes WHERE user_id = 1;
+
+-- display recipes where breakfast is true and user id is 1
+SELECT user_recipe_categories.breakfast FROM user_recipe_categories INNER JOIN recipes ON user_recipe_categories.user_id = recipes.user_id;
+
+-- Shows recipe ID, name and image URL from specific user ID
+SELECT recipes.id, recipe_name, image_url FROM recipes LEFT JOIN user_recipe_categories ON user_recipe_categories.recipe_id = recipes.id WHERE recipes.user_id = 1;
+
+-- Shows recipe ID, name and img_url from specific user ID AND category
+SELECT recipes.id, recipe_name, image_url FROM recipes LEFT JOIN user_recipe_categories ON user_recipe_categories.recipe_id = recipes.id WHERE recipes.user_id = 1 AND user_recipe_categories.breakfast = true;
