@@ -19,21 +19,23 @@ post '/create' do
   recipe_name = params[:recipe_name]
   serving_size = params[:serving_size]
   prep_time = params[:prep_time]
-  categories_selected = params[:categories] #do something with this, return array
+  # categories_selected = params[:categories] #do something with this, return array
   cook_time = params[:cook_time]
   image_url = params[:image_url]
   source = params[:source]
   ingredients = params[:ingredients]
   method = params[:method]
-  calories = params[:calories]
-  total_fat = params[:total_fat]
-  saturated_fat = params[:saturated_fat]
-  cholesterol = params[:cholesterol]
-  sodium = params[:sodium]
-  total_carb = params[:total_carb]
-  dietary_fibre = params[:dietary_fibre]
-  sugars = params[:sugars]
-  protein = params[:protein]
+  calories = params[:calories] == "" ? 0 : params[:calories]
+  total_fat = params[:total_fat] == "" ? 0 : params[:total_fat]
+  saturated_fat = params[:saturated_fat] == "" ? 0 : params[:saturated_fat]
+  cholesterol = params[:cholesterol] == "" ? 0 : params[:cholesterol]
+  sodium = params[:sodium] == "" ? 0 : params[:sodium]
+  total_carb = params[:total_carb] == "" ? 0 : params[:total_carb]
+  dietary_fibre = params[:dietary_fibre] == "" ? 0 : params[:dietary_fibre]
+  sugars = params[:sugars] == "" ? 0 : params[:sugars]
+  protein = params[:protein] == "" ? 0 : params[:protein]
+
+
 
   create_recipe(user_id, recipe_name, serving_size, prep_time, cook_time, image_url, source, ingredients, method, calories, total_fat, saturated_fat, cholesterol, sodium, total_carb, dietary_fibre, sugars, protein)
 
@@ -48,20 +50,20 @@ post '/create' do
   dessert = false
   favourite = false
 
-  if categories_selected != nil
-    categories_selected.each do |category|
-      if category == "breakfast"
-        breakfast = true
-      elsif category == "lunch"
-        lunch = true
-      elsif category == "dinner"
-        dinner = true
-      elsif category == "dessert"
-        dessert = true
-      elsif category == "favourite"
-        favourite = true
-      end
-    end
+  if params[:breakfast] == ["on"]
+    breakfast = true
+  end
+  if params[:lunch] == ["on"]
+    lunch = true
+  end
+  if params[:dinner] == ["on"]
+    dinner = true
+  end
+  if params[:dessert] == ["on"]
+    dessert = true
+  end
+  if params[:favourite] == ["on"]
+    favourite = true
   end
 
   recipe_categories(user_id, recipe_id, breakfast, lunch, dinner, dessert, favourite)
@@ -69,13 +71,14 @@ post '/create' do
   redirect "/display/#{recipe_id}"
 end
 
-post '/display/:id' do
-
-end
 
 get '/display/:id' do |id|
   data = find_recipe("id", id)
-  erb :"/recipe/show", locals: { recipe: data }
+
+  ingredients = line_break(data[0]["ingredients"])
+  method = line_break(data[0]["method"])
+
+  erb :"/recipe/show", locals: { recipe: data, ingredients: ingredients, method: method }
 end
 
 get '/display/:id/edit' do |id|
@@ -83,16 +86,11 @@ get '/display/:id/edit' do |id|
   erb :"recipe/edit", locals: { recipe: data }
 end
 
-post '/display/:id/edit' do
-  redirect "/#{recipe_id}/#{recipe_name}"
-end
-
 put '/display/:id/edit' do |id|
   id = params[:id]
   recipe_name = params[:recipe_name]
   serving_size = params[:serving_size]
   prep_time = params[:prep_time]
-  # NEED TO DO CATEGORIES
   cook_time = params[:cook_time]
   image_url = params[:image_url]
   source = params[:source]

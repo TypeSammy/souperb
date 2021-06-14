@@ -1,24 +1,48 @@
 <% recipe.each do |info| %>
-<ul>
-  <li><h1><%= info["recipe_name"] %></h1>
-  <li><%= info["serving_size"] %> | <%= info["prep_time"] %> | <%= info["cook_time"] %></li>
-  <li> <img src="<%= info["image_url"] %>" alt="image"></li>
-  <li> <a href="<%= info["source"] %>" target="_blank">Source</a></li>
-  <li class="ingredient_list"><%= info["ingredients"] %></li>
-  <li class="method"><%= info["method"] %></li>
-  <div>
-    <li class="nutrition">Nutrition</li>
-      <li><%= info["calories"] %></li>
-      <li><%= info["total_fat"] %></li>
-      <li><%= info["saturated_fat"] %></li>
-      <li><%= info["cholesterol"] %></li>
-      <li><%= info["sodium"] %></li>
-      <li><%= info["total_carb"] %></li>
-      <li><%= info["dietary_fibre"] %></li>
-      <li><%= info["sugars"] %></li>
-      <li><%= info["protein"] %></li>
+
+  <h2><%= info["recipe_name"] %></h2>
+
+  <div class="border">
+    <div class="recipe_basic_information">
+      <div>
+        <label for="serving_size"><p>Serving size</p></label>
+        <%= info["serving_size"] %>
+      </div>
+      <div>
+        <label for="prep_time"><p>Prep time</p></label>
+        <%= info["prep_time"] %>
+      </div>
+      <div>
+        <label for="cook_time"><p>Cook time</p></label>
+        <%= info["cook_time"] %>  
+      </div>
+    </div>
   </div>
-</ul>
+
+  <div class="img_container">
+    <img src="<%= info["image_url"] %>" alt="image"></li>
+  </div>
+
+  <a href="<%= info["source"] %>" target="_blank">Source</a>
+
+  <h3>Ingredients</h3>
+  <%= ingredients %>
+
+  <h3>Method</h3>
+  <%= method %>
+
+  <div>
+  <h3>Nutrition</h3>
+      <%= info["calories"] %>
+      <%= info["total_fat"] %>
+      <%= info["saturated_fat"] %>
+      <%= info["cholesterol"] %>
+      <%= info["sodium"] %>
+      <%= info["total_carb"] %>
+      <%= info["dietary_fibre"] %>
+      <%= info["sugars"] %>
+      <%= info["protein"] %>
+  </div>
 
 <form action="/display/<%=info["id"]%>/edit">
   <input type="submit" value="EDIT">
