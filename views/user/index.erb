@@ -1,1 +1,17 @@
-display login
+<%= error %>
+<form action="/login" method="POST">
+  <label for="username">
+    <p>Username</p>
+  </label>
+  <input type="text" name="username">
+  <label for="password">
+    <p>Password</p>
+  </label>
+  <input type="password" name="password">
+
+  <input type="submit" value="login">
+</form>
+
+<form action="/signup">
+  <p>Don't have an account? <a href="/signup">Sign up here</a></p>
+</form>

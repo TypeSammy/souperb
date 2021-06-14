@@ -1,12 +1,13 @@
 get '/souperb' do
-  breakfast = recipe_by_category("breakfast")
-  lunch = recipe_by_category("lunch")
-  dinner = recipe_by_category("dinner")
-  dessert = recipe_by_category("dessert")
-  favourites = recipe_by_category("favourite")
-  category = [breakfast, lunch, dinner, dessert, favourites]
+  # breakfast = recipe_by_category("breakfast")
+  # lunch = recipe_by_category("lunch")
+  # dinner = recipe_by_category("dinner")
+  # dessert = recipe_by_category("dessert")
+  # favourites = recipe_by_category("favourite")
+  # category = [breakfast, lunch, dinner, dessert, favourites]
 
-  erb :"/recipe/index", locals: { breakfast: breakfast, lunch: lunch, dinner: dinner, dessert: dessert, favourites: favourites, category: category}
+  erb :"/recipe/index"
+  # locals: { breakfast: breakfast, lunch: lunch, dinner: dinner, dessert: dessert, favourites: favourites, category: category}
 end
 
 get '/create' do
@@ -112,17 +113,17 @@ put '/display/:id/edit' do |id|
 end
 
 post '/category' do
-  category = params[:category].downcase
+  selected_category = params[:category].downcase
 
-  redirect "#{category}"
+  redirect "/category/#{selected_category}"
 end
 
-get '/:category' do |category|
+get '/category/:selected_category' do |selected_category|
 
-  if category == "all"
+  if selected_category == "all"
     display_category = display_all(1)
   else
-    display_category = recipe_by_category(category)
+    display_category = recipe_by_category(selected_category)
   end
   erb :"/recipe/category", locals: { category: display_category }
 end
