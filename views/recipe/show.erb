@@ -44,7 +44,11 @@
       <%= info["protein"] %>
   </div>
 
-<form action="/display/<%=info["id"]%>/edit">
-  <input type="submit" value="EDIT">
-</form>
+  <form action="/display/<%=info["id"]%>/edit">
+    <input type="submit" value="EDIT">
+  </form>
+  <form action="/display/<%=info["id"]%>/edit" method="POST">
+    <input type="hidden" name="_method" value="DELETE">
+    <input type="submit" value="DELETE">
+  </form>
 <% end %>

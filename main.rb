@@ -4,7 +4,12 @@ require "pry" if development?
 require "pg"
 
 get '/' do
- redirect "/login"
+
+  if user_logged_in?()   
+    redirect "/souperb"
+  else
+    redirect "/login"
+  end
 end
 
 enable :sessions

@@ -5,7 +5,7 @@ def create_recipe(user_id, recipe_name, serving_size, prep_time, cook_time, imag
 end
 
 def find_recipe(column_name, value)
-  sql_query = "SELECT * FROM recipes WHERE #{column_name} = $1 AND user_id = 1"
+  sql_query = "SELECT * FROM recipes WHERE #{column_name} = $1 AND user_id = #{session[:user_id]}"
   params = [value]
   run_sql(sql_query, params)
 end
@@ -23,9 +23,15 @@ def update_recipe(id, recipe_name, serving_size, prep_time, cook_time, image_url
 end
 
 def recipe_by_category(category)
-  run_sql("SELECT recipes.id, recipe_name, image_url FROM recipes LEFT JOIN user_recipe_categories ON user_recipe_categories.recipe_id = recipes.id WHERE recipes.user_id = 1 AND user_recipe_categories.#{category} = true;")
+  run_sql("SELECT recipes.id, recipe_name, image_url FROM recipes LEFT JOIN user_recipe_categories ON user_recipe_categories.recipe_id = recipes.id WHERE recipes.user_id = #{session[:user_id]} AND user_recipe_categories.#{category} = true;")
 end
 
 def display_all(user_id)
   run_sql("SELECT id, recipe_name, image_url FROM recipes WHERE user_id = #{user_id};")
+end
+
+def delete_recipe(table, coliumn_name, id)
+  sql_query = "DELETE FROM #{table} WHERE #{coliumn_name} = $1"
+  params = [id]
+  run_sql(sql_query, params)
 end

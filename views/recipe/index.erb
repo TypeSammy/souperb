@@ -48,3 +48,10 @@
 </div>
 
 <h3>Recently added</h3>
+
+<%  if user_logged_in?() %>
+  <form action="/signout" method="POST">
+    <input type="hidden" name="_method" value="DELETE">
+    <input type="submit" value="logout">
+  </form>
+<% end %>

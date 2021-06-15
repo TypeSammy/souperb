@@ -7,9 +7,9 @@ def user_sign_up(username, email, pw)
   run_sql(sql_query, params)
 end
 
-def find_user(column_name, username)
+def find_user(column_name, value)
   sql_query = "SELECT * FROM users WHERE #{column_name} = $1;"
-  params = [username]
+  params = [value]
   results = run_sql(sql_query, params)
 
   if results.to_a.length > 0
@@ -17,4 +17,14 @@ def find_user(column_name, username)
   else
     nil
   end
+end
+
+def username_check(username_input)
+  username_in_db = find_user("username", username_input)
+  if username_in_db != nil
+    result = username_in_db["username"]
+  else
+    result = nil
+  end
+  result
 end

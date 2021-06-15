@@ -16,3 +16,8 @@ post "/login" do
     erb :"user/index", locals: { error: "Incorrect username or password" }
   end
 end
+
+delete "/signout" do
+  session[:user_id] = nil
+  redirect "/"
+end
