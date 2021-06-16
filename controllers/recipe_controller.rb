@@ -26,44 +26,26 @@ post '/create' do
     source = params[:source]
     ingredients = params[:ingredients]
     method = params[:method]
-    calories = params[:calories] == "" ? 0 : params[:calories]
-    total_fat = params[:total_fat] == "" ? 0 : params[:total_fat]
-    saturated_fat = params[:saturated_fat] == "" ? 0 : params[:saturated_fat]
-    cholesterol = params[:cholesterol] == "" ? 0 : params[:cholesterol]
-    sodium = params[:sodium] == "" ? 0 : params[:sodium]
-    total_carb = params[:total_carb] == "" ? 0 : params[:total_carb]
-    dietary_fibre = params[:dietary_fibre] == "" ? 0 : params[:dietary_fibre]
-    sugars = params[:sugars] == "" ? 0 : params[:sugars]
-    protein = params[:protein] == "" ? 0 : params[:protein]
+    calories = string_to_0(params[:calories])
+    total_fat = string_to_0(params[:total_fat])
+    saturated_fat = string_to_0(params[:saturated_fat])
+    cholesterol = string_to_0(params[:cholesterol])
+    sodium = string_to_0(params[:sodium])
+    total_carb = string_to_0(params[:total_carb])
+    dietary_fibre = string_to_0(params[:dietary_fibre])
+    sugars = string_to_0(params[:sugars])
+    protein = string_to_0(params[:protein])
 
     create_recipe(user_id, recipe_name, serving_size, prep_time, cook_time, image_url, source, ingredients, method, calories, total_fat, saturated_fat, cholesterol, sodium, total_carb, dietary_fibre, sugars, protein)
-
-    # get recipe id function
 
     recipe_information = find_recipe("recipe_name", recipe_name)
     recipe_id = recipe_information[0]["id"]
 
-    breakfast = false
-    lunch = false
-    dinner = false
-    dessert = false
-    favourite = false
-
-    if params[:breakfast] == "on"
-      breakfast = true
-    end
-    if params[:lunch] == "on"
-      lunch = true
-    end
-    if params[:dinner] == "on"
-      dinner = true
-    end
-    if params[:dessert] == "on"
-      dessert = true
-    end
-    if params[:favourite] == "on"
-      favourite = true
-    end
+    breakfast = checkbox_conversion(params[:breakfast])
+    lunch = checkbox_conversion(params[:lunch])
+    dinner = checkbox_conversion(params[:dinner])
+    dessert = checkbox_conversion(params[:dessert])
+    favourite = checkbox_conversion(params[:favourite])
 
     create_recipe_categories(user_id, recipe_id, breakfast, lunch, dinner, dessert, favourite)
 
@@ -105,39 +87,23 @@ put '/display/:id/edit' do |id|
   source = params[:source]
   ingredients = params[:ingredients]
   method = params[:method]
-  calories = params[:calories] == "" ? 0 : params[:calories]
-  total_fat = params[:total_fat] == "" ? 0 : params[:total_fat]
-  saturated_fat = params[:saturated_fat] == "" ? 0 : params[:saturated_fat]
-  cholesterol = params[:cholesterol] == "" ? 0 : params[:cholesterol]
-  sodium = params[:sodium] == "" ? 0 : params[:sodium]
-  total_carb = params[:total_carb] == "" ? 0 : params[:total_carb]
-  dietary_fibre = params[:dietary_fibre] == "" ? 0 : params[:dietary_fibre]
-  sugars = params[:sugars] == "" ? 0 : params[:sugars]
-  protein = params[:protein] == "" ? 0 : params[:protein]
+  calories = string_to_0(params[:calories])
+  total_fat = string_to_0(params[:total_fat])
+  saturated_fat = string_to_0(params[:saturated_fat])
+  cholesterol = string_to_0(params[:cholesterol])
+  sodium = string_to_0(params[:sodium])
+  total_carb = string_to_0(params[:total_carb])
+  dietary_fibre = string_to_0(params[:dietary_fibre])
+  sugars = string_to_0(params[:sugars])
+  protein = string_to_0(params[:protein])
 
   update_recipe(id, recipe_name, serving_size, prep_time, cook_time, image_url, source, ingredients, method, calories, total_fat, saturated_fat, cholesterol, sodium, total_carb, dietary_fibre, sugars, protein)
 
-  breakfast = false
-  lunch = false
-  dinner = false
-  dessert = false
-  favourite = false
-
-  if params[:breakfast] == "on"
-    breakfast = true
-  end
-  if params[:lunch] == "on"
-    lunch = true
-  end
-  if params[:dinner] == "on"
-    dinner = true
-  end
-  if params[:dessert] == "on"
-    dessert = true
-  end
-  if params[:favourite] == "on"
-    favourite = true
-  end
+  breakfast = checkbox_conversion(params[:breakfast])
+  lunch = checkbox_conversion(params[:lunch])
+  dinner = checkbox_conversion(params[:dinner])
+  dessert = checkbox_conversion(params[:dessert])
+  favourite = checkbox_conversion(params[:favourite])
 
   update_categories(id, breakfast, lunch, dinner, dessert, favourite)
 

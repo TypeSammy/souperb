@@ -216,7 +216,12 @@ input {
   grid-template-rows: auto;
   gap: 10px;
   margin-bottom: 10px;
-  height: 105px;
+  height: 205px;
+  font-size: 10pt;
+}
+
+.recipe_3row_container div input {
+  height: 35px;
 }
 
 .categories_container {
@@ -384,4 +389,19 @@ textarea {
 
 .btn input:hover {
   padding: 10px 9%;
+}
+
+
+.btn_container {
+  display: flex;
+  gap: 17%;
+  flex-direction: row;
+}
+
+.btn_container input {
+  padding: 10px 57%;
+}
+
+.btn_container input:hover {
+  padding: 10px 73%;
 }

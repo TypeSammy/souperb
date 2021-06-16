@@ -46,25 +46,54 @@
 
     <label for="ingredient amount"><p>Nutrition</p></label>
     <div class="recipe_3row_container">
-      <input type="number" step="0.01" value="<%= recipe["calories"] %>" name="calories">
-      <input type="number" step="0.01" value="<%= recipe["total_fat"] %>" name="total_fat">
-      <input type="number" step="0.01" value="<%= recipe["saturated_fat"] %>" name="saturated_fat">
-      <input type="number" step="0.01" value="<%= recipe["cholesterol"] %>" name="cholesterol">
-      <input type="number" step="0.01" value="<%= recipe["sodium"] %>" name="sodium">
-      <input type="number" step="0.01" value="<%= recipe["total_carb"] %>" name="total_carb">
-      <input type="number" step="0.01" value="<%= recipe["dietary_fibre"] %>" name="dietary_fibre">
-      <input type="number" step="0.01" value="<%= recipe["sugars"] %>" name="sugars">
-      <input type="number" step="0.01" value="<%= recipe["protein"] %>" name="protein">
+      <div>
+        <label for="calories">Calories</label>
+        <input type="number" step="0.01" value="<%= recipe["calories"] %>" name="calories">
+      </div>
+      <div>
+        <label for="calories">Total fat</label>
+        <input type="number" step="0.01" value="<%= recipe["total_fat"] %>" name="total_fat">
+      </div>
+      <div>
+        <label for="calories">Saturated fat</label>
+        <input type="number" step="0.01" value="<%= recipe["saturated_fat"] %>" name="saturated_fat">
+      </div>
+      <div>
+        <label for="calories">Cholesterol</label>
+        <input type="number" step="0.01" value="<%= recipe["cholesterol"] %>" name="cholesterol">
+      </div>
+      <div>
+        <label for="calories">Sodium</label>
+        <input type="number" step="0.01" value="<%= recipe["sodium"] %>" name="sodium">
+      </div>
+      <div>
+        <label for="calories">Total carbohydrate</label>
+        <input type="number" step="0.01" value="<%= recipe["total_carb"] %>" name="total_carb">
+      </div>
+      <div>
+        <label for="calories">Dietary fibre</label>
+        <input type="number" step="0.01" value="<%= recipe["dietary_fibre"] %>" name="dietary_fibre">
+      </div>
+      <div>
+        <label for="calories">Sugars</label>
+        <input type="number" step="0.01" value="<%= recipe["sugars"] %>" name="sugars">
+      </div>
+      <div>
+        <label for="calories">Protein</label>
+        <input type="number" step="0.01" value="<%= recipe["protein"] %>" name="protein">
+      </div>
     </div>
-  <div class="btn">
-    <input type="submit" value="UPDATE">
+
+  <div class="btn_container">
+    <div class="btn">
+      <input type="submit" value="UPDATE">
+    </div>
+    <div class="btn">
+    <form action="/display/<%=recipe["id"]%>/edit" method="POST">
+      <input type="hidden" name="_method" value="DELETE">
+      <input type="submit" value="DELETE">
+    </form>
+    </div>
   </div>
 </form>
-
-<div class="btn">
-  <form action="/display/<%=recipe["id"]%>/edit" method="POST">
-    <input type="hidden" name="_method" value="DELETE">
-    <input type="submit" value="DELETE">
-  </form>
-</div>
 
