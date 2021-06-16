@@ -265,9 +265,11 @@ textarea {
   grid-template-columns: 1fr 1fr 1fr;
   grid-template-rows: auto;
   grid-gap: 38px;
-}
-.recently_added_container {
   margin-bottom: 30px;
+}
+
+.selected_cat_container  a {
+  width: 100px;
 }
 
 .recipe_thumbnail {
@@ -275,16 +277,18 @@ textarea {
   display: grid;
   grid-template-rows: 100%;
   height: 95%;
+  max-width: 100px;
 }
 .recipe_thumbnail input {
   background-color: white;
   cursor: pointer;
 }
 .recipe_thumbnail img {
-  width: 100%;
+  width: 175px;
   object-fit: cover;
   height: 155px;
 }
+
 
 /* RECIPE PAGE */
 .recipe_basic_information {
@@ -301,7 +305,7 @@ textarea {
 .small_text a {
   margin: 0;
   padding: 0;
-  color: rgb(167 207 206);
+  color: rgb(86 148 147);
 }
 
 .recipe_img img {
