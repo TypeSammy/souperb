@@ -1,57 +1,64 @@
 <form action="create" method="POST">
 
-  <div class="recipe_container">
-    <input type="text" placeholder="Title" name="recipe_name">
+  <div class="recipe_form_container">
+    <div class="recipe_2row_container">
+      <input type="text" placeholder="Title" name="recipe_name">
+      <input type="text" placeholder="Serving size" name="serving_size">
+      <input type="text" placeholder="Prep time" name="prep_time">
+      <input type="text" placeholder="Cook time" name="cook_time">
+    </div>
 
-    <input type="text" placeholder="Serving size" name="serving_size">
-    <input type="text" placeholder="Prep time" name="prep_time">
-    <input type="text" placeholder="Cook time" name="cook_time">
-    <input type="text" placeholder="Image URL" name="image_url">
-    <input type="text" placeholder="Source URL" name="source">
-  </div>
+    <div class="recipe_1row_container">
+      <input type="text" placeholder="Image URL" name="image_url">
+      <input type="text" placeholder="Source URL" name="source">
+    </div>
 
-  <label for="categories"> <p>Select categories</p> </label>
-  <div class="checkbox_container">
-    <label class="container">Breakfast
-      <input type="checkbox" name="breakfast[]">
-    </label>
-    <label class="container">Lunch
-      <input type="checkbox" name="lunch[]">
-    </label>
-    <label class="container">Dinner
-      <input type="checkbox" name="dinner[]">
-    </label>
-    <label class="container">Dessert
-      <input type="checkbox" name="dessert[]">
-    </label>
-    <label class="container">Favourite
-      <input type="checkbox" name="favourite[]">
-    </label>
-  </div>
+    <div class="categories_container">
+      <label for="categories"> <p>Select categories</p> </label>
+      <div class="checkbox_container">
+        <label class="container">Breakfast
+          <input type="checkbox" name="breakfast">
+        </label>
+        <label class="container">Lunch
+          <input type="checkbox" name="lunch">
+        </label>
+        <label class="container">Dinner
+          <input type="checkbox" name="dinner">
+        </label>
+        <label class="container">Dessert
+          <input type="checkbox" name="dessert">
+        </label>
+        <label class="container">Favourite
+          <input type="checkbox" name="favourite">
+        </label>
+      </div>
+    </div>
 
-  <div>
+
     <label for="ingredients"><p>Ingredients</p></label>
-    <textarea name="ingredients" cols="50" rows="4"></textarea>
-  </div>
-    <div>
+    <div class="recipe_1row_container">
+      <textarea name="ingredients" cols="50" rows="4"></textarea>
+    </div>
     <label for="method"><p>Method</p></label>
-    <textarea name="method" cols="50" rows="4"></textarea>
+    <div class="recipe_1row_container">
+      <textarea name="method" cols="50" rows="4"></textarea>
+    </div>
+
+    <label for="ingredient amount"><p>Nutrition</p></label>
+    <div class="recipe_3row_container">
+      <input type="number" step="0.01" placeholder="Calories" name="calories">
+      <input type="number" step="0.01" placeholder="Total fat" name="total_fat">
+      <input type="number" step="0.01" placeholder="Saturated fat" name="saturated_fat">
+      <input type="number" step="0.01" placeholder="Cholesterol" name="cholesterol">
+      <input type="number" step="0.01" placeholder="Sodium" name="sodium">
+      <input type="number" step="0.01" placeholder="Total carb" name="total_carb">
+      <input type="number" step="0.01" placeholder="Dietary Fibre" name="dietary_fibre">
+      <input type="number" step="0.01" placeholder="Sugars" name="sugars">
+      <input type="number" step="0.01" placeholder="Protein" name="protein">
+    </div>
+    <div class="btn">
+      <input type="submit" value="Create">
+    </div>
   </div>
-
-
-  <label for="ingredient amount"><p>Nutrition</p></label>
-  <div class="nutrition_container">
-    <input type="number" step="0.01" placeholder="Calories" name="calories">
-    <input type="number" step="0.01" placeholder="Total fat" name="total_fat">
-    <input type="number" step="0.01" placeholder="Saturated fat" name="saturated_fat">
-    <input type="number" step="0.01" placeholder="Cholesterol" name="cholesterol">
-    <input type="number" step="0.01" placeholder="Sodium" name="sodium">
-    <input type="number" step="0.01" placeholder="Total carb" name="total_carb">
-    <input type="number" step="0.01" placeholder="Dietary Fibre" name="dietary_fibre">
-    <input type="number" step="0.01" placeholder="Sugars" name="sugars">
-    <input type="number" step="0.01" placeholder="Protein" name="protein">
-  </div>
-
-  <input type="submit" value="Create">
 </form>
 <form action="/souperb" method=""></form>

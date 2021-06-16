@@ -9,11 +9,66 @@
 <body>
 
   <header>
-    <h1><strong>SOUP</strong>ERB</h1>
+    <div>
+      <ul class="toolbar">
+      <% if user_logged_in?() %>
+        <li> <a href="/create">New recipe</a></li>
+        <li><%= current_user()["username"] %></li>
+        <li><a href="/signout">Logout</a></li>
+      <% else %>
+        <li><a href="/login">Login</a></li>
+        <li><a href="/signup">Sign up</a></li>
+      <% end %>
+      </ul>
+    </div>
+    <div class="logo">
+      <a href="/"><h1><strong>SOUP</strong>ERB</h1></a>  
+    </div>
   </header>
   <main>
-  <%= yield %>
+    <%= yield %>
   </main>
-
+  <footer>
+    <div class="footer_container">
+      <div>
+        <ul>
+          <li><strong>SOUP</strong>ERB</li>
+          <li>About us</li>
+          <li>Our team</li>
+          <li>FAQ</li>
+          <li>Contact us</li>
+        </ul>
+      </div>
+      <div>
+        <ul>
+          <li><strong>Categories</strong></li>
+          <li>Breakfast</li>
+          <li>Lunch</li>
+          <li>Dinner</li>
+          <li>Dessert</li>
+          <li>Favourite</li>
+          <li>All</li>
+        </ul>
+      </div>
+      <div>
+        <ul>
+          <li><strong>Social</strong></li>
+          <li>Facebook</li>
+          <li>Instagram</li>
+          <li>Twitter</li>
+        </ul>
+      </div>
+    </div>
+    <div>
+      <ul class="footer_terms">
+        <li>©<strong>SOUP</strong>ERB</li>
+        <li>Terms</li>
+        <li>|</li>
+        <li>Privacy</li>
+        <li>|</li>
+        <li>Code of conduct</li>
+      </ul>
+    </div>
+  </footer>
 </body>
 </html>

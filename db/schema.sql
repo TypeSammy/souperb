@@ -9,9 +9,9 @@ CREATE TABLE recipes (
 id SERIAL PRIMARY KEY,
 user_id INT,
 recipe_name TEXT,
-serving_size NUMERIC,
-prep_time NUMERIC,
-cook_time NUMERIC,
+serving_size TEXT,
+prep_time TEXT,
+cook_time TEXT,
 image_url TEXT,
 source TEXT,
 ingredients TEXT,
@@ -49,3 +49,5 @@ SELECT recipes.id, recipe_name, image_url FROM recipes LEFT JOIN user_recipe_cat
 
 -- Shows recipe ID, name and img_url from specific user ID AND category
 SELECT recipes.id, recipe_name, image_url FROM recipes LEFT JOIN user_recipe_categories ON user_recipe_categories.recipe_id = recipes.id WHERE recipes.user_id = 1 AND user_recipe_categories.breakfast = true;
+
+SELECT * FROM user_recipe_categories WHERE recipe_id = #{}; 

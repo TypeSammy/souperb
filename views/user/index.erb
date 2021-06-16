@@ -1,17 +1,29 @@
-<%= error %>
-<form action="/login" method="POST">
-  <label for="username">
-    <p>Username</p>
-  </label>
-  <input type="text" name="username">
-  <label for="password">
-    <p>Password</p>
-  </label>
-  <input type="password" name="password">
-
-  <input type="submit" value="login">
-</form>
-
-<form action="/signup">
-  <p>Don't have an account? <a href="/signup">Sign up here</a></p>
-</form>
+<div class="login_container">
+  <div class="login">
+    <div class="small_text">
+      <%= error %>
+    </div>
+    <form action="/login" method="POST">
+      <div class="username_box">
+        <label for="username">
+          <p>Username</p>
+        </label>
+        <input type="text" name="username">
+      </div>
+      <div class="password_box">
+        <label for="password">
+          <p>Password</p>
+        </label>
+        <input type="password" name="password">
+      </div>
+      <div class="btn">
+        <input type="submit" value="LOGIN">
+      </div>
+    </form>
+    <div class="small_text">
+      <form action="/signup">
+        <p>Don't have an account? <a href="/signup">Sign up here</a></p>
+      </form>
+    </div>
+  </div>
+</div>

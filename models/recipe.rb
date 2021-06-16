@@ -10,7 +10,7 @@ def find_recipe(column_name, value)
   run_sql(sql_query, params)
 end
 
-def recipe_categories(user_id, recipe_id, breakfast, lunch, dinner, dessert, favourite)
+def create_recipe_categories(user_id, recipe_id, breakfast, lunch, dinner, dessert, favourite)
   sql_query = "INSERT INTO user_recipe_categories(user_id, recipe_id, breakfast, lunch, dinner, dessert, favourite) VALUES($1, $2, $3, $4, $5, $6, $7)"
   params = [user_id, recipe_id, breakfast, lunch, dinner, dessert, favourite]
   run_sql(sql_query, params)
@@ -22,16 +22,38 @@ def update_recipe(id, recipe_name, serving_size, prep_time, cook_time, image_url
   run_sql(sql_query, params)
 end
 
+def update_categories(recipe_id, breakfast, lunch, dinner, dessert, favourite)
+  sql_query = "UPDATE user_recipe_categories SET breakfast = $2, lunch = $3, dinner = $4, dessert = $5, favourite = $6 WHERE recipe_id = $1;"
+  params = [recipe_id, breakfast, lunch, dinner, dessert, favourite]
+  run_sql(sql_query, params)
+end
+
 def recipe_by_category(category)
-  run_sql("SELECT recipes.id, recipe_name, image_url FROM recipes LEFT JOIN user_recipe_categories ON user_recipe_categories.recipe_id = recipes.id WHERE recipes.user_id = #{session[:user_id]} AND user_recipe_categories.#{category} = true;")
+  sql_query = "SELECT recipes.id, recipe_name, image_url FROM recipes LEFT JOIN user_recipe_categories ON user_recipe_categories.recipe_id = recipes.id WHERE recipes.user_id = $1 AND user_recipe_categories.#{category} = true;"
+  params = [session[:user_id]]
+  run_sql(sql_query, params)
 end
 
 def display_all(user_id)
-  run_sql("SELECT id, recipe_name, image_url FROM recipes WHERE user_id = #{user_id};")
+  sql_query = ("SELECT id, recipe_name, image_url FROM recipes WHERE user_id = $1 ORDER BY recipe_name ASC;")
+  params = [user_id]
+  run_sql(sql_query, params)
+end
+
+def recipe_categories(recipe_id)
+  sql_query = "SELECT * FROM user_recipe_categories WHERE recipe_id = $1;"
+  params = [recipe_id]
+  run_sql(sql_query, params)
 end
 
 def delete_recipe(table, coliumn_name, id)
   sql_query = "DELETE FROM #{table} WHERE #{coliumn_name} = $1"
   params = [id]
+  run_sql(sql_query, params)
+end
+
+def new_recipes(user_id)
+  sql_query = "SELECT * FROM recipes WHERE user_id = $1 ORDER BY id DESC LIMIT 3;"
+  params = [user_id]
   run_sql(sql_query, params)
 end
