@@ -37,12 +37,12 @@ SOUPerb is an app that will let you store all your recipes in one easy to use pl
 - Add recipe tags where users can input their own tags (eg: eggplant, gluten free)
 
 ## 📸 Flowchart
-![](https://github.com/TypeSammy/tictactoe/blob/main/tictactoe-screenshot.png)
+![](https://raw.githubusercontent.com/TypeSammy/souperb/master/screenshot/websitemockup.png)
 
 ## 🎨 Digital Mockups
 Closely resembles the original mockup.
 
-![](https://github.com/TypeSammy/tictactoe/blob/main/tictactoe-screenshot.png)
+![](https://raw.githubusercontent.com/TypeSammy/souperb/master/screenshot/flowcharts.png)
 
 ***
 
