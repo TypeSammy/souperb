@@ -391,7 +391,6 @@ textarea {
   padding: 10px 9%;
 }
 
-
 .btn_container {
   display: flex;
   gap: 17%;
@@ -404,4 +403,9 @@ textarea {
 
 .btn_container input:hover {
   padding: 10px 73%;
+}
+
+.delete_btn input {
+  background: rgb(192 192 192);
+  margin-top: 0;
 }

@@ -62,10 +62,9 @@
 
 <div class="btn">
   <%  if user_logged_in?() %>
-  <form action="/signout" method="POST">
-    <input type="hidden" name="_method" value="DELETE">
-    <input type="submit" value="LOGOUT">
-  </form>
+    <form action="/signout" method="POST">
+      <input type="hidden" name="_method" value="DELETE">
+      <input type="submit" value="LOGOUT">
+    </form>
+   <% end %>
 </div>
-
-<% end %>

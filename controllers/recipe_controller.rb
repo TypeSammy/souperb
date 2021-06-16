@@ -1,6 +1,6 @@
 get '/souperb' do
   if user_logged_in?()
-      new_recipes = new_recipes(session[:user_id])
+    new_recipes = new_recipes(session[:user_id])
     erb :"/recipe/index", locals: { new_recipe: new_recipes }
   else
     redirect "/login"

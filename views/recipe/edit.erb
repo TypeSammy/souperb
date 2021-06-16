@@ -7,12 +7,10 @@
       <input type="text" value="<%= recipe["prep_time"] %>" name="prep_time">
       <input type="text" value="<%= recipe["cook_time"] %>" name="cook_time">
     </div>
-
     <div class="recipe_1row_container">
       <input type="text" value="<%= recipe["image_url"] %>" name="image_url">
       <input type="text" value="<%= recipe["source"] %>" name="source">
     </div>
-
     <div class="categories_container">
       <label for="categories"> <p>Select categories</p> </label>
       <div class="checkbox_container">
@@ -33,8 +31,6 @@
         </label>
       </div>
     </div>
-
-
     <label for="ingredients"><p>Ingredients</p></label>
     <div class="recipe_1row_container">
       <textarea name="ingredients" cols="50" rows="4"><%= recipe["ingredients"] %></textarea>
@@ -83,17 +79,14 @@
         <input type="number" step="0.01" value="<%= recipe["protein"] %>" name="protein">
       </div>
     </div>
-
-  <div class="btn_container">
     <div class="btn">
       <input type="submit" value="UPDATE">
     </div>
-    <div class="btn">
-    <form action="/display/<%=recipe["id"]%>/edit" method="POST">
+  </div>
+</form>
+  <div class="btn delete_btn">
+      <form action="/display/<%=recipe["id"]%>/edit" method="POST">
       <input type="hidden" name="_method" value="DELETE">
       <input type="submit" value="DELETE">
     </form>
-    </div>
   </div>
-</form>
-
