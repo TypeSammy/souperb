@@ -1,8 +1,8 @@
-get '/signup' do
+get "/signup" do
   erb :"/user/new", locals: { error: "" }
 end
 
-post '/signup' do
+post "/signup" do
   username = params[:username]
   email = params[:email]
   pw = params[:password]

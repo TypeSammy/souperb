@@ -1,4 +1,4 @@
-get '/login' do
+get "/login" do
   erb :"/user/index", locals: { error: "" }
 end
 

@@ -1,4 +1,4 @@
-get '/souperb' do
+get "/souperb" do
   if user_logged_in?()
     new_recipes = new_recipes(session[:user_id])
     erb :"/recipe/index", locals: { new_recipe: new_recipes }
@@ -7,7 +7,7 @@ get '/souperb' do
   end
 end
 
-get '/create' do
+get "/create" do
   if user_logged_in?()   
     erb :"/recipe/new"
   else
@@ -15,7 +15,7 @@ get '/create' do
   end
 end
 
-post '/create' do
+post "/create" do
   if user_logged_in?() 
     user_id = session[:user_id]
     recipe_name = params[:recipe_name]
@@ -55,8 +55,7 @@ post '/create' do
   end
 end
 
-
-get '/display/:id' do |id|
+get "/display/:id" do |id|
   if user_logged_in?()   
     data = find_recipe("id", id)
     ingredients = line_break(data[0]["ingredients"])
@@ -67,7 +66,7 @@ get '/display/:id' do |id|
   end
 end
 
-get '/display/:id/edit' do |id|
+get "/display/:id/edit" do |id|
   if user_logged_in?()   
     categories = recipe_categories(id)
     data = find_recipe("id", id)
@@ -77,7 +76,7 @@ get '/display/:id/edit' do |id|
   end
 end
 
-put '/display/:id/edit' do |id|
+put "/display/:id/edit" do |id|
   id = params[:id]
   recipe_name = params[:recipe_name]
   serving_size = params[:serving_size]
@@ -110,12 +109,12 @@ put '/display/:id/edit' do |id|
   redirect "/display/#{id}"
 end
 
-post '/category' do
+post "/category" do
   selected_category = params[:category].downcase
   redirect "/category/#{selected_category}"
 end
 
-get '/category/:selected_category' do |selected_category|
+get "/category/:selected_category" do |selected_category|
   if user_logged_in?()  
     if selected_category == "all"
       display_category = display_all(session[:user_id])

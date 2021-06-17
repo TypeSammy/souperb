@@ -50,7 +50,7 @@
 <div class="recently_added_container">
   <% new_recipe.each do |recipe| %>
     <form action="/display/<%=recipe["id"]%>/<%=recipe["recipe_name"]%>" method="GET">
-      <div class="recipe_thumbnail">
+      <div class="recipe_thumbnail recent_thumbnail">
         <a href="/display/<%=recipe["id"]%>">
           <img src="<%= recipe["image_url"] %>">
         </a>

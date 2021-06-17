@@ -49,5 +49,3 @@ SELECT recipes.id, recipe_name, image_url FROM recipes LEFT JOIN user_recipe_cat
 
 -- Shows recipe ID, name and img_url from specific user ID AND category
 SELECT recipes.id, recipe_name, image_url FROM recipes LEFT JOIN user_recipe_categories ON user_recipe_categories.recipe_id = recipes.id WHERE recipes.user_id = 1 AND user_recipe_categories.breakfast = true;
-
-SELECT * FROM user_recipe_categories WHERE recipe_id = #{}; 
