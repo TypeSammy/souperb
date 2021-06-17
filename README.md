@@ -1,6 +1,5 @@
 # SOUPerb
 SOUPerb is an app that will let you store all your recipes in one easy to use place.
-
 This full-stack application uses RESTful routes and MVC framework.
 
 ## 🍲 How to use
@@ -12,7 +11,7 @@ This full-stack application uses RESTful routes and MVC framework.
 - You can edit the recipe as you please, as well as remove them entirely.
 
 ## 🔐 Sign up feature
-- Case sensitive unique usernames
+- Case sensitive and unique usernames
 - Email validator
   - Include one @
   - One character before @
@@ -25,7 +24,7 @@ This full-stack application uses RESTful routes and MVC framework.
   - At least one number
 
 ## 🛠️ Technology used
-- HTML
+- HTML/CSS
 - Ruby
 - Sinatra
 - PostgreSQL
@@ -38,7 +37,7 @@ This full-stack application uses RESTful routes and MVC framework.
 - Designed a rough website mockup with Adobe PS
 
 ## 🍳 Try it out
-- [Try it out](https://secure-tundra-99837.herokuapp.com/login)
+- [Try SOUPerb here](https://secure-tundra-99837.herokuapp.com/login)
 
 ## 🐛 Bugs
 - N/A
@@ -53,7 +52,6 @@ This full-stack application uses RESTful routes and MVC framework.
 ![](https://raw.githubusercontent.com/TypeSammy/souperb/master/screenshot/websitemockup.png)
 
 ## ✏️ Flowchart
-Closely resembles the original mockup.
 
 ![](https://raw.githubusercontent.com/TypeSammy/souperb/master/screenshot/flowcharts.png)
 
