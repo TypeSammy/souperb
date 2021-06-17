@@ -63,10 +63,15 @@ Flowchart created with Creately
 ***
 
 ## 💫 My experience
+I found that creating the visual representations of the database, web flow and RESTful routes helped keep my project organised.
+Having a very clear structure and end goal in mind meant I was never stuck on what to do next.
+
+Key learning:
+- Plan everything
+
 Challenges:
-- CSS styling for so many pages
-- Receiving specific params
-- PSQL queries
+- CSS stylings
+- Displaying specific pages with specific paths
 
 ## 🌟 Show your support
 Give this a star to show your support.

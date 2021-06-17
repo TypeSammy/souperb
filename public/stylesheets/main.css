@@ -129,7 +129,7 @@ input {
   margin-bottom: 130px;
 }
 
-.image_placeholder {
+.main_image_container {
   background: url(https://images.unsplash.com/photo-1612472844581-dd9310a6bad1?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80);
   background-color: rgb(236 236 236);
   margin-top: 38px;
