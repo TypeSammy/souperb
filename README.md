@@ -52,7 +52,7 @@ This full-stack application uses RESTful routes and MVC framework.
 Mockup created with Photoshop
 ![](https://raw.githubusercontent.com/TypeSammy/souperb/master/screenshot/websitemockup.png)
 
-## 🎨 Digital Mockups
+## 🍗 Icons
 Icons created with Krita
 ![](https://github.com/TypeSammy/souperb/blob/master/screenshot/06.21%20Souperb%20Icons.png)
 
