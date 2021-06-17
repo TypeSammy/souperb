@@ -49,10 +49,15 @@ This full-stack application uses RESTful routes and MVC framework.
 - Add recipe tags where users can input their own tags (eg: eggplant, gluten free)
 
 ## 🎨 Digital Mockups
+Mockup created with Photoshop
 ![](https://raw.githubusercontent.com/TypeSammy/souperb/master/screenshot/websitemockup.png)
 
-## ✏️ Flowchart
+## 🎨 Digital Mockups
+Icons created with Krita
+![](https://github.com/TypeSammy/souperb/blob/master/screenshot/06.21%20Souperb%20Icons.png)
 
+## ✏️ Flowchart
+Flowchart created with Creately
 ![](https://raw.githubusercontent.com/TypeSammy/souperb/master/screenshot/flowcharts.png)
 
 ***
