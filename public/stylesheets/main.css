@@ -66,6 +66,7 @@ p {
 .small_text {
  font-size: 70%;
  margin: 0;
+ width: 80%;
 }
 
 ul {
@@ -354,12 +355,10 @@ textarea {
   color: rgb(73 81 82);
   width: 90%;
 }
-.username_box {
-  margin-top: 10px;
-}
+
 
 .password_box {
-  margin-bottom: 7px;
+  margin-bottom: 11px;
 }
 
 .login {
@@ -377,7 +376,7 @@ textarea {
 }
 
 .username_box, .password_box, .email_box {
-  margin-top: 10%;
+  margin-top: 23px;
 }
 
 .btn input {
