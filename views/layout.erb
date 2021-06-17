@@ -14,7 +14,12 @@
       <% if user_logged_in?() %>
         <li> <a href="/create">New recipe</a></li>
         <li><%= current_user()["username"] %></li>
-        <li><a href="/signout">Logout</a></li>
+        <li class="signout_tb">
+          <form action="/signout" method="POST">
+          <input type="hidden" name="_method" value="DELETE">
+          <input type="submit" value="Log out">
+          </form>
+        </li>
       <% else %>
         <li><a href="/login">Login</a></li>
         <li><a href="/signup">Sign up</a></li>
