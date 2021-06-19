@@ -102,12 +102,16 @@ footer {
 .heading_container {
   display: grid;
   grid-template-columns: 1fr;
+  margin-bottom: 75px;
+}
+
+.recipe_title {
   grid-template-rows: 6px;
 }
 
 .heading_container h2 {
   padding: 0px 23px;
-  margin: 0px 0px 40px 0px;
+  margin: 0px 0px 0px 0px;
   font-size: 32pt;
 }
 .blue_box {
@@ -270,15 +274,22 @@ textarea {
 
 .selected_cat_container  a {
   width: 100px;
+  height: 170px;
 }
 
 .recipe_thumbnail {
   position: relative;
   display: grid;
   grid-template-rows: 100%;
-  height: 95%;
+  height: 93%;
   max-width: 100px;
+  margin-bottom: 0px;
 }
+
+.recent_thumbnail {
+  height: 95%;
+}
+
 .recipe_thumbnail input {
   background-color: white;
   cursor: pointer;
@@ -287,7 +298,7 @@ textarea {
   width: 175px;
   object-fit: cover;
   height: 155px;
-  margin-top: 90%;
+  margin-top: 0%;
 }
 
 .recent_thumbnail img {
