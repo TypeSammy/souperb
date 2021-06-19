@@ -83,7 +83,7 @@ footer {
   margin-top: 3%;
   color: rgb(255 255 255);
   display: grid;
-  grid-template-columns: 15% 15% 10%;
+  grid-template-columns: 220px 220px 150px;
   font-size: 9pt;
   justify-content: center;
   line-height: 20px;
@@ -93,7 +93,7 @@ footer {
   margin-top: 4%;
   margin-bottom: 6%;
   display: grid;
-  grid-template-columns: 9% 4.5% 1.5% 5% 1.5% 10%;
+  grid-template-columns: 120px 52px 20px 60px 20px 150px;
   font-size: 9pt;
   justify-content: center;
   color: rgb(255 255 255);
