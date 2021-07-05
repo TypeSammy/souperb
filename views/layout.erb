@@ -12,7 +12,7 @@
     <div>
       <ul class="toolbar">
       <% if user_logged_in?() %>
-        <li> <a href="/create">New recipe</a></li>
+        <li> <a href="/souperb/create">New recipe</a></li>
         <li><%= current_user()["username"] %></li>
         <li class="signout_tb">
           <form action="/signout" method="POST">
