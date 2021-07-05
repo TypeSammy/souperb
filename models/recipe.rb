@@ -1,19 +1,19 @@
 def create_recipe(user_id, recipe_name, serving_size, prep_time, cook_time, image_url, source, ingredients, method, calories, total_fat, saturated_fat, cholesterol, sodium, total_carb, dietary_fibre, sugars, protein)
-  sql_query = "INSERT INTO recipes(user_id, recipe_name, serving_size, prep_time, cook_time, image_url, source, ingredients, method, calories, total_fat, saturated_fat, cholesterol, sodium, total_carb, dietary_fibre, sugars, protein) VALUES($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14, $15, $16, $17, $18)"
+  sql_query = "INSERT INTO recipes(user_id, recipe_name, serving_size, prep_time, cook_time, image_url, source, ingredients, method, calories, total_fat, saturated_fat, cholesterol, sodium, total_carb, dietary_fibre, sugars, protein) VALUES($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14, $15, $16, $17, $18) RETURNING *"
   params = [user_id, recipe_name, serving_size, prep_time, cook_time, image_url, source, ingredients, method, calories, total_fat, saturated_fat, cholesterol, sodium, total_carb, dietary_fibre, sugars, protein]
   run_sql(sql_query, params)
 end
 
 def find_recipe(column_name, value)
-  sql_query = "SELECT * FROM recipes WHERE #{column_name} = $1 AND user_id = #{session[:user_id]}"
-  params = [value]
+  sql_query = "SELECT * FROM recipes WHERE #{column_name} = $1 AND user_id = $2 LIMIT 1"
+  params = [value, session[:user_id]]
   run_sql(sql_query, params)
 end
 
 def create_recipe_categories(user_id, recipe_id, breakfast, lunch, dinner, dessert, favourite)
   sql_query = "INSERT INTO user_recipe_categories(user_id, recipe_id, breakfast, lunch, dinner, dessert, favourite) VALUES($1, $2, $3, $4, $5, $6, $7)"
   params = [user_id, recipe_id, breakfast, lunch, dinner, dessert, favourite]
-  run_sql(sql_query, params)
+  results = run_sql(sql_query, params)
 end
 
 def update_recipe(id, recipe_name, serving_size, prep_time, cook_time, image_url, source, ingredients, method, calories, total_fat, saturated_fat, cholesterol, sodium, total_carb, dietary_fibre, sugars, protein)
@@ -29,7 +29,8 @@ def update_categories(recipe_id, breakfast, lunch, dinner, dessert, favourite)
 end
 
 def recipe_by_category(category)
-  sql_query = "SELECT recipes.id, recipe_name, image_url FROM recipes LEFT JOIN user_recipe_categories ON user_recipe_categories.recipe_id = recipes.id WHERE recipes.user_id = $1 AND user_recipe_categories.#{category} = true;"
+  sql_query = "SELECT recipes.id, recipe_name, image_url FROM recipes LEFT JOIN user_recipe_categories ON user_recipe_categories.recipe_id = recipes.id WHERE recipes.user_id = $1 AND user_recipe_categories.#{category} = true"
+
   params = [session[:user_id]]
   run_sql(sql_query, params)
 end
@@ -41,7 +42,7 @@ def display_all(user_id)
 end
 
 def recipe_categories(recipe_id)
-  sql_query = "SELECT * FROM user_recipe_categories WHERE recipe_id = $1;"
+  sql_query = "SELECT * FROM user_recipe_categories WHERE recipe_id = $1 LIMIT 1;"
   params = [recipe_id]
   run_sql(sql_query, params)
 end

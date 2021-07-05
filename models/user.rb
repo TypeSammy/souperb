@@ -19,7 +19,7 @@ def user_sign_up(username, email, pw)
 end
 
 def find_user(column_name, value)
-  sql_query = "SELECT * FROM users WHERE #{column_name} = $1;"
+  sql_query = "SELECT * FROM users WHERE #{column_name} = $1 LIMIT 1;"
   params = [value]
   results = run_sql(sql_query, params)
 

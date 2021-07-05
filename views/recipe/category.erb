@@ -6,9 +6,9 @@
 
 <div class="selected_cat_container">
   <% category.each do |recipe| %>
-    <form action="/display/<%=recipe["id"]%>/<%=recipe["recipe_name"]%>" method="GET">
+    <form action="/souperb/recipe/<%=recipe["id"]%>/<%=recipe["recipe_name"]%>" method="GET">
       <div class="recipe_thumbnail">
-        <a href="/display/<%=recipe["id"]%>">
+        <a href="/souperb/recipe/<%=recipe["id"]%>">
           <img src="<%= recipe["image_url"] %>">
         </a>
         <input type="submit" value="<%= recipe["recipe_name"] %>" name="category">

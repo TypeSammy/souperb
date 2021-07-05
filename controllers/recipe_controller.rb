@@ -7,7 +7,7 @@ get "/souperb" do
   end
 end
 
-get "/create" do
+get "/souperb/create" do
   if user_logged_in?()   
     erb :"/recipe/new"
   else
@@ -15,7 +15,7 @@ get "/create" do
   end
 end
 
-post "/create" do
+post "/souperb/create" do
   if user_logged_in?() 
     user_id = session[:user_id]
     recipe_name = params[:recipe_name]
@@ -36,10 +36,10 @@ post "/create" do
     sugars = string_to_0(params[:sugars])
     protein = string_to_0(params[:protein])
 
-    create_recipe(user_id, recipe_name, serving_size, prep_time, cook_time, image_url, source, ingredients, method, calories, total_fat, saturated_fat, cholesterol, sodium, total_carb, dietary_fibre, sugars, protein)
+    new_recipe = create_recipe(user_id, recipe_name, serving_size, prep_time, cook_time, image_url, source, ingredients, method, calories, total_fat, saturated_fat, cholesterol, sodium, total_carb, dietary_fibre, sugars, protein)
 
-    recipe_information = find_recipe("recipe_name", recipe_name)
-    recipe_id = recipe_information[0]["id"]
+    new_recipe_result = new_recipe[0]
+    recipe_id = new_recipe_result["id"]
 
     breakfast = checkbox_conversion(params[:breakfast])
     lunch = checkbox_conversion(params[:lunch])
@@ -49,13 +49,13 @@ post "/create" do
 
     create_recipe_categories(user_id, recipe_id, breakfast, lunch, dinner, dessert, favourite)
 
-    redirect "/display/#{recipe_id}"
+    redirect "/souperb/recipe/#{recipe_id}"
   else
     redirect "/login"
   end
 end
 
-get "/display/:id" do |id|
+get "/souperb/recipe/:id" do |id|
   if user_logged_in?()   
     data = find_recipe("id", id)
     ingredients = line_break(data[0]["ingredients"])
@@ -66,7 +66,7 @@ get "/display/:id" do |id|
   end
 end
 
-get "/display/:id/edit" do |id|
+get "/souperb/recipe/:id/edit" do |id|
   if user_logged_in?()   
     categories = recipe_categories(id)
     data = find_recipe("id", id)
@@ -76,7 +76,7 @@ get "/display/:id/edit" do |id|
   end
 end
 
-put "/display/:id/edit" do |id|
+put "/souperb/recipe/:id/edit" do |id|
   id = params[:id]
   recipe_name = params[:recipe_name]
   serving_size = params[:serving_size]
@@ -106,20 +106,22 @@ put "/display/:id/edit" do |id|
 
   update_categories(id, breakfast, lunch, dinner, dessert, favourite)
 
-  redirect "/display/#{id}"
+  redirect "/souperb/recipe/#{id}"
 end
 
-post "/category" do
+post "/souperb/category" do
   selected_category = params[:category].downcase
-  redirect "/category/#{selected_category}"
+  redirect "/souperb/category/#{selected_category}"
 end
 
-get "/category/:selected_category" do |selected_category|
+get "/souperb/category/:selected_category" do |selected_category|
   if user_logged_in?()  
-    if selected_category == "all"
-      display_category = display_all(session[:user_id])
-    elsif selected_category != "all"
+    approved_categories = ["breakfast", "lunch", "dinner", "dessert", "favourite"]
+    if approved_categories.include?(selected_category)
       display_category = recipe_by_category(selected_category)
+    else
+      selected_category = "all"
+      display_category = display_all(session[:user_id])
     end
     erb :"/recipe/category", locals: { category: display_category, selected_category: selected_category } 
   else
@@ -127,7 +129,7 @@ get "/category/:selected_category" do |selected_category|
   end
 end
 
-delete "/display/:id/edit" do |id|
+delete "/souperb/recipe/:id/edit" do |id|
   delete_recipe("recipes", "id", id)
   delete_recipe("user_recipe_categories", "recipe_id", id)
   redirect "/"

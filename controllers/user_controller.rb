@@ -15,7 +15,9 @@ post "/signup" do
 
   if valid_email_check && valid_password_check && valid_user_check
     user_sign_up(username, email, pw)
-    redirect "/login"
+    user = find_user("username", username)
+    session[:user_id] = user["id"]
+    redirect "/"
   elsif valid_email_check == false
     erb :"user/new", locals: { error: "Invalid Email" }
   elsif valid_password_check == false
