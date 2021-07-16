@@ -1,6 +1,9 @@
 # SOUPerb
 SOUPerb is an app that will let you store all your recipes in one easy to use place.
 This full-stack application uses RESTful routes and MVC framework.
+You can skip creating an account by using the logins below:
+  - Username: Souperb
+  - Password: SoupMail1
 
 ## 🍲 How to use
 - You can sign up via the "sign up" CTA, then proceed to login.
@@ -9,6 +12,9 @@ This full-stack application uses RESTful routes and MVC framework.
 - Select the relevent categories and click "Create".
 - Your recipe has now been added and can be found on the homepage via the categories section.
 - You can edit the recipe as you please, as well as remove them entirely.
+
+## 🍳 Try it out
+- [Try SOUPerb here](https://secure-tundra-99837.herokuapp.com/login)
 
 ## 🔐 Sign up feature
 - Case sensitive and unique usernames
@@ -35,9 +41,6 @@ This full-stack application uses RESTful routes and MVC framework.
 - Created the database and pre-planned most PSQL queries
 - Researched recipe websites and food apps
 - Designed a rough website mockup with Adobe PS
-
-## 🍳 Try it out
-- [Try SOUPerb here](https://secure-tundra-99837.herokuapp.com/login)
 
 ## 🐛 Bugs
 - N/A
