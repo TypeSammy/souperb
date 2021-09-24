@@ -80,6 +80,6 @@ Challenges:
 Give this a star to show your support.
 
 ## 📬 Contact me on
-- [LinkedIn](https://www.linkedin.com/in/samantha-gold-90b939a9/)
+- [LinkedIn](https://www.linkedin.com/in/samantha-gold-dev/)
 - [E-mail](mailto:typesammy@gmail.com)
 - [Instagram](https://www.instagram.com/typesammy_)

@@ -49,3 +49,10 @@ SELECT recipes.id, recipe_name, image_url FROM recipes LEFT JOIN user_recipe_cat
 
 -- Shows recipe ID, name and img_url from specific user ID AND category
 SELECT recipes.id, recipe_name, image_url FROM recipes LEFT JOIN user_recipe_categories ON user_recipe_categories.recipe_id = recipes.id WHERE recipes.user_id = 1 AND user_recipe_categories.breakfast = true;
+
+
+SELECT category.category_name FROM category INNER JOIN flashcards ON category.user_id = fkashcards.user_id
+-- Display all flashcards 
+
+
+SELECT flashcards.id, question, hint, answer FROM flashcards LEFT JOIN category ON category.flashcard_id = flashcards.id WHERE flashcards.user_id = $1 AND category.${category_name} = $1
